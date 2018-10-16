@@ -14,7 +14,7 @@ STATUS = {
     'failed': Status.FAILED,
     'skipped': Status.SKIPPED,
     'untested': Status.SKIPPED,
-    'undefined': Status.BROKEN
+    'undefined': Status.UNKNOWN
 }
 
 
