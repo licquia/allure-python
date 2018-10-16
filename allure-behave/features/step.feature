@@ -30,6 +30,21 @@ Feature: Step
       And this step has status details with message "ZeroDivisionError"
 
 
+  Scenario: Unimplemented step
+    Given feature definition
+        """
+        Feature: Step status
+
+          Scenario: Scenario with unimplemented step
+              Given simple unimplemented step
+        """
+     When I run behave with allure formatter
+     Then allure report has a scenario with name "Scenario with unimplemented step"
+      And scenario contains step "Given simple unimplemented step"
+      And this step has "unknown" status
+      And this step has status details with message "NotImplementedError"
+
+
   Scenario: Step text parameter
     Given feature definition
         """

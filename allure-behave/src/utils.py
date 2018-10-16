@@ -77,10 +77,13 @@ def step_status(result):
 
 
 def get_status(exception):
-    if exception and isinstance(exception, AssertionError):
-        return Status.FAILED
-    elif exception:
-        return Status.BROKEN
+    if exception:
+        if isinstance(exception, AssertionError):
+            return Status.FAILED
+        elif isinstance(exception, NotImplementedError):
+            return Status.UNKNOWN
+        else:
+            return Status.BROKEN
     return Status.PASSED
 
 
