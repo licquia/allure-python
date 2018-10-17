@@ -14,7 +14,7 @@ STATUS = {
     'failed': Status.FAILED,
     'skipped': Status.SKIPPED,
     'untested': Status.SKIPPED,
-    'undefined': Status.UNKNOWN
+    'undefined': Status.SKIPPED
 }
 
 
@@ -81,7 +81,7 @@ def get_status(exception):
         if isinstance(exception, AssertionError):
             return Status.FAILED
         elif isinstance(exception, NotImplementedError):
-            return Status.UNKNOWN
+            return Status.SKIPPED
         else:
             return Status.BROKEN
     return Status.PASSED
